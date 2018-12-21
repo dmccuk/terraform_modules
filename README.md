@@ -1,4 +1,4 @@
-## Welcome ot my new github repo for using modules in terraform.
+## Welcome to my new github repo for using modules in terraform.
 
 ### install and setup the aswcli tool
 
