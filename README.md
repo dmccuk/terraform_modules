@@ -8,21 +8,26 @@
 ````
 Add in your keys as required.
 
-Clone the code onto your linux server and make updates to these files:
+Clone the code onto your linux server and make updates to this files:
 
-modules/elk/main.tf
+````
+stack/vars.tf
+````
+
+Change the variable count for each size of EC2 instance you need.
+
 ````
 shared_credentials_file = "/root/.aws/credentials"
 ````
 Make this you're own location as per when you ran aws configure.
 
-change the node count to the one you want as well as the ports required:
-
 ````
-stack/vars.tf:  default = 2
-````
-
-````
+# terraform init
 # terraform plan
 # terraform apply
 ````
+
+# Future improvements:
+
+1) Currently the code will only allow one ec2 instance type per size of instance.
+2) Make the ingress ports into an array so they are dynamic based on variables for each ec2 instance type.
