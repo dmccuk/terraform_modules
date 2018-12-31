@@ -2,6 +2,7 @@
 
 ## Requirements:
 
+ * Be familiar with AWS (pem keys, access/sceret keys, etc)
  * Terraform installed (please see hashicorp website)
  * Linux (I use vagrant on Windows)
 
