@@ -8,7 +8,7 @@ provider "aws" {
 module "ec2_micro" {
   source        = "../modules/ec2_micro"
   count         = "${var.count_micro}"
-  ami           = "ami-0773391ae604c49a4"
+  ami           = "${var.ami}"
   server_port   = "${var.server_port}"
   instance_type = "t2.micro"
   key_name      = "${var.key_name}"
@@ -17,7 +17,7 @@ module "ec2_micro" {
 module "ec2_small" {
   source        = "../modules/ec2_small"
   count         = "${var.count_small}"
-  ami           = "ami-0773391ae604c49a4"
+  ami           = "${var.ami}"
   server_port   = "${var.server_port}"
   instance_type = "t2.small"
   key_name      = "${var.key_name}"
@@ -26,7 +26,7 @@ module "ec2_small" {
 module "ec2_med" {
   source        = "../modules/ec2_med"
   count         = "${var.count_med}"
-  ami           = "ami-0773391ae604c49a4"
+  ami           = "${var.ami}"
   server_port   = "${var.server_port}"
   instance_type = "t2.medium"
   key_name      = "${var.key_name}"

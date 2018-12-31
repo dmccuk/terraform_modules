@@ -1,5 +1,5 @@
 variable "count_micro" {
-  default = 2
+  default = 1
 }
 variable "count_small" {
   default = 1
@@ -24,4 +24,6 @@ variable "private_key_path" {
 variable "key_name" {
   default = "dmccuk"
 }
-
+variable "ami" { # Ubuntu 16.04
+  default = "ami-0773391ae604c49a4"
+}
