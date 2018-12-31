@@ -1,5 +1,11 @@
-variable "count" {
+variable "count_micro" {
   default = 2
+}
+variable "count_small" {
+  default = 1
+}
+variable "count_med" {
+  default = 0
 }
 
 #variable "access_key" {} # replaced by aws credentials
@@ -12,3 +18,6 @@ variable "server_port" {
   default = 80
 }
 
+variable "private_key_path" {
+  default = "/root/dmccuk.pem"
+}
