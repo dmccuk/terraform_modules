@@ -11,7 +11,7 @@ module "ec2_micro" {
   ami           = "ami-0773391ae604c49a4"
   server_port   = "${var.server_port}"
   instance_type = "t2.micro"
-  key_name      = "dmccuk"
+  key_name      = "${var.key_name}"
   private_key_path = "${var.private_key_path}"
 }
 module "ec2_small" {
@@ -20,7 +20,7 @@ module "ec2_small" {
   ami           = "ami-0773391ae604c49a4"
   server_port   = "${var.server_port}"
   instance_type = "t2.small"
-  key_name      = "dmccuk"
+  key_name      = "${var.key_name}"
   private_key_path = "${var.private_key_path}"
 }
 module "ec2_med" {
@@ -29,6 +29,6 @@ module "ec2_med" {
   ami           = "ami-0773391ae604c49a4"
   server_port   = "${var.server_port}"
   instance_type = "t2.medium"
-  key_name      = "dmccuk"
+  key_name      = "${var.key_name}"
   private_key_path = "${var.private_key_path}"
 }

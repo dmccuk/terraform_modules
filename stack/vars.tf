@@ -21,3 +21,7 @@ variable "server_port" {
 variable "private_key_path" {
   default = "/root/dmccuk.pem"
 }
+variable "key_name" {
+  default = "dmccuk"
+}
+
