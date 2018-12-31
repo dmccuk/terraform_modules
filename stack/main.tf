@@ -10,7 +10,7 @@ module "ec2_micro" {
   count         = "${var.count_micro}"
   ami           = "ami-0773391ae604c49a4"
   server_port   = "${var.server_port}"
-  instance_type = "t2.small"
+  instance_type = "t2.micro"
   key_name      = "dmccuk"
   private_key_path = "${var.private_key_path}"
 }
