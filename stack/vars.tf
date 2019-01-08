@@ -1,11 +1,14 @@
 variable "count_micro" {
-  default = 1
+  default = 0
 }
 variable "count_small" {
-  default = 1
+  default = 0
 }
 variable "count_med" {
   default = 0
+}
+variable "count_gitlab" {
+  default = 1
 }
 
 #variable "access_key" {} # replaced by aws credentials

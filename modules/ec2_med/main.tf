@@ -74,7 +74,7 @@ resource "aws_instance" "ec2_med" {
     inline = [
       "sudo apt update -yq",
       "sudo DEBIAN_FRONTEND=noninteractive apt upgrade -yq",
-      "sudo apt install wget curl git -yq"
+      "sudo apt install wget curl git python-minimal default-jre -yq"
     ]
   }
 

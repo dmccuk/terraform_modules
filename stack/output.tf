@@ -7,3 +7,6 @@ value = "${module.ec2_small.pub_ip_small}"
 output "pub_ip_med" {
 value = "${module.ec2_med.pub_ip_med}"
 }
+output "pub_ip_gitlab" {
+value = "${module.gitlab.pub_ip_gitlab}"
+}

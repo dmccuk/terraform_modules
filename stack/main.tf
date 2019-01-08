@@ -32,3 +32,12 @@ module "ec2_med" {
   key_name      = "${var.key_name}"
   private_key_path = "${var.private_key_path}"
 }
+module "gitlab" {
+  source        = "../modules/gitlab"
+  count         = "${var.count_gitlab}"
+  ami           = "${var.ami}"
+  server_port   = "${var.server_port}"
+  instance_type = "t2.medium"
+  key_name      = "${var.key_name}"
+  private_key_path = "${var.private_key_path}"
+}

@@ -3,7 +3,7 @@
 sudo apt update -yq
 sudo DEBIAN_FRONTEND=noninteractive apt upgrade -yq
 sudo apt install wget curl git python openssh-server ca-certificates -yq
-echo "postfix postfix/mailname 'string example.com'" | sudo debconf-set-selections
+echo "postfix postfix/mailname string example.com" | sudo debconf-set-selections
 echo "postfix postfix/main_mailer_type string 'Internet Site'" | sudo debconf-set-selections
 sudo apt-get install -y postfix
 curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
