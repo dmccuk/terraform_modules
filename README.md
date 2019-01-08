@@ -1,13 +1,30 @@
 ## Welcome to my new github repo for using modules in terraform.
 
+## Cloners:
+ * **If you use this code, it will cost you some AWS Dollars:**
+   * Only build what you need to.
+   * Turn off anything you aren't using. You only pay for what you use.
+   * **Use this code at your own risk. By typing "terraform apply" you are building in AWS and you WILL be charged.**
+ * Thanks for taking the time to clone and test my code.
+ * If you like the code and it works for you, please like the repo.
+ * I make regular updates so please follow me to get notified when I make changes.
+ * Please collaborate. If you see something that's wrong or could be done better, or even a typo!, make a pull request and I'll happily test and merge your code.
+ * If you see a problem, please raise me an issue and I'll look to resolve it asap.
+ 
 ## Requirements:
 
- * Be familiar with AWS (pem keys, access/sceret keys, etc)
- * install awscli (see below): pip is required
- * Terraform installed (please see hashicorp website)
- * Linux (I use vagrant on Windows)
- * Linux packages required (install these): curl git wget python 
+ * You should be familiar with AWS (pem keys, access/sceret keys, etc). If not, search Ryan Kroonenberg on udemy.
+ * install awscli (instructions below): pip may be required.
+ * You'll need to install Terraform (please see hashicorp's website).
+ * A Linux server (I use vagrant (Ubuntu 16.04.5 LTS) on Windows - My terraform code runs on ubuntu 16.04).
+ * Linux packages required (install these): curl git wget python. 
 
+
+## Updates:
+ * The plan is to make a mini CI/CD "datacentre" with all the current Devops tooling available within the environment
+ * I've added a new module to standup a gitlab Server. in the stack/vars.tf, make this "1" for terraform to build you a GitLab CE installation based on the public IP address of the node.
+ * I'll shortly add an update to standup a Jenkins server as well (installed and configured).
+ 
 #### Option (1) Install pip first
 <details>
  <summary>Expand for the details</summary>
@@ -101,6 +118,8 @@ shared_credentials_file = "/root/.aws/credentials"
 ````
 Once you're happy, run the following:
 
+**By running "terraform apply", AWS will charge you for what you build**
+If in doubt, ask someone and don't do it.
 ````
 # terraform init
 # terraform plan
