@@ -1,7 +1,7 @@
-## Welcome to my new github repo for using modules in terraform.
+## Welcome to my repo for using modules in terraform.
 
 Hi,
-The purpose of this code is to build out a "Datacentre" of servers that met your environment requirements. You have the option to build any number of these types of EC2 instances (micro, small, medium). Simply update the stack/vars.tf file with the number and, once your access, secret, .pem key and keyname have been added, you should be able to start building. I'll be updating the code regularly to include an option to build gitlab and jenkins servers (configured) so you can start using them as soon as they're built. I want to add some webservers and a load balancer too (maybe an nginx LB or a ELB) as well as a testing framework to work with code testing on git commits that jenkins can hook in to. It should be a handy bit of code by the end! 
+The purpose of this code is to build out a "Datacentre" of servers that met your environment requirements and be easy. You have the option to build any number of these types of EC2 instances (micro, small, medium). Simply update the stack/vars.tf file with the number you require and, once your access, secret, .pem key and keyname have been added, you should be able to start building. I'll be updating the code regularly to include an option to build gitlab and jenkins servers (configured) so you can start using them as soon as they're built. I want to add some webservers and a load balancer too (maybe an nginx LB or a ELB) as well as a testing framework to work with code testing on git commits that jenkins can hook into. It should be a handy bit of code by the end! 
 
 ## Cloners:
  * **If you use this code, it will cost you some AWS Dollars:**
@@ -24,7 +24,7 @@ The purpose of this code is to build out a "Datacentre" of servers that met your
 
 
 ## Updates:
- * The plan is to make a mini CI/CD "datacentre" with all the current Devops tooling available within the environment * I've added a new module to standup a gitlab Server. in the stack/vars.tf, make this "1" for terraform to build you a GitLab CE installation based on the public IP address of the node.
+ * **I've added a new module to standup a gitlab Server. in the stack/vars.tf, make this "1" for terraform to build you a GitLab CE installation based on the public IP address of the node.**
  * I'll shortly add an update to standup a Jenkins server as well (installed and configured).
  
 #### Option (1) Install pip first
