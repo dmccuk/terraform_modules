@@ -10,6 +10,9 @@ variable "count_med" {
 variable "count_gitlab" {
   default = 0
 }
+variable "count_jenkins" {
+  default = 1
+}
 
 #variable "access_key" {} # replaced by aws credentials
 #variable "secret_key" {} # replaced by aws credentials
