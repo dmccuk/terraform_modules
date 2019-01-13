@@ -8,6 +8,9 @@ variable "count_med" {
   default = 0
 }
 variable "count_gitlab" {
+  default = 0
+}
+variable "count_jenkins" {
   default = 1
 }
 

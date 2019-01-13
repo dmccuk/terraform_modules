@@ -41,3 +41,12 @@ module "gitlab" {
   key_name      = "${var.key_name}"
   private_key_path = "${var.private_key_path}"
 }
+module "jenkins" {
+  source        = "../modules/jenkins"
+  count         = "${var.count_jenkins}"
+  ami           = "${var.ami}"
+  server_port   = "${var.server_port}"
+  instance_type = "t2.micro"
+  key_name      = "${var.key_name}"
+  private_key_path = "${var.private_key_path}"
+}
