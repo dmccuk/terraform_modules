@@ -12,7 +12,6 @@ module "ec2_micro" {
   server_port   = "${var.server_port}"
   instance_type = "t2.micro"
   key_name      = "${var.key_name}"
-  private_key_path = "${var.private_key_path}"
 }
 module "ec2_small" {
   source        = "../modules/ec2_small"
@@ -21,7 +20,6 @@ module "ec2_small" {
   server_port   = "${var.server_port}"
   instance_type = "t2.small"
   key_name      = "${var.key_name}"
-  private_key_path = "${var.private_key_path}"
 }
 module "ec2_med" {
   source        = "../modules/ec2_med"
@@ -30,7 +28,6 @@ module "ec2_med" {
   server_port   = "${var.server_port}"
   instance_type = "t2.medium"
   key_name      = "${var.key_name}"
-  private_key_path = "${var.private_key_path}"
 }
 module "gitlab" {
   source        = "../modules/gitlab"
@@ -39,7 +36,6 @@ module "gitlab" {
   server_port   = "${var.server_port}"
   instance_type = "t2.medium"
   key_name      = "${var.key_name}"
-  private_key_path = "${var.private_key_path}"
 }
 module "jenkins" {
   source        = "../modules/jenkins"
@@ -48,5 +44,4 @@ module "jenkins" {
   server_port   = "${var.server_port}"
   instance_type = "t2.micro"
   key_name      = "${var.key_name}"
-  private_key_path = "${var.private_key_path}"
 }

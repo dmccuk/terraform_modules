@@ -50,6 +50,15 @@ resource "aws_security_group" "ssh_ec2_med" {
   }
 }
 
+data "external" "ssh" {
+  program = ["bash", "${path.module}/../.scripts/ssh-gen.sh"]
+}
+
+resource "aws_key_pair" "sshkey" {
+  key_name   = "${var.key_name}-ec2_med"
+  public_key = "${file("${data.external.ssh.result.path}.pub")}"
+}
+
 resource "aws_instance" "ec2_med" {
   count         = "${var.count}"
   ami           = "${var.ami}"           #Ubuntu 16.04
@@ -62,7 +71,7 @@ resource "aws_instance" "ec2_med" {
   security_groups = ["${aws_security_group.ssh_ec2_med.name}"]
 
   # key_name is your AWS keypair to allow you access
-  key_name = "${var.key_name}"
+  key_name = "${aws_key_pair.sshkey.key_name}"
 
 # Left in place but #'d out for future updates.
 #  provisioner "file" {
@@ -82,7 +91,7 @@ resource "aws_instance" "ec2_med" {
   connection {
     type        = "ssh"
     user        = "ubuntu"
-    private_key = "${file("${var.private_key_path}")}"
+    private_key = "${file("${data.external.ssh.result.path}")}"
     timeout     = "2m"
     agent       = false
   }
