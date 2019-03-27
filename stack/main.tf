@@ -13,3 +13,7 @@ module "gitlab" {
   ami           = "${var.ami}"
   provision_script = "files/standard.sh"
 }
+
+output "gitlab_public_ip" {
+  value = "${module.gitlab.public_ip}"
+}
