@@ -1,47 +1,15 @@
 provider "aws" {
-#  access_key = "${var.access_key}" # replaced by aws credentials
-#  secret_key = "${var.secret_key}" # replaced by aws credentials
   shared_credentials_file = "/root/.aws/credentials"
   region     = "${var.region}"
 }
 
-module "ec2_micro" {
-  source        = "../modules/ec2_micro"
-  count         = "${var.count_micro}"
-  ami           = "${var.ami}"
-  server_port   = "${var.server_port}"
-  instance_type = "t2.micro"
-  key_name      = "${var.key_name}"
-}
-module "ec2_small" {
-  source        = "../modules/ec2_small"
-  count         = "${var.count_small}"
-  ami           = "${var.ami}"
-  server_port   = "${var.server_port}"
-  instance_type = "t2.small"
-  key_name      = "${var.key_name}"
-}
-module "ec2_med" {
-  source        = "../modules/ec2_med"
-  count         = "${var.count_med}"
-  ami           = "${var.ami}"
-  server_port   = "${var.server_port}"
-  instance_type = "t2.medium"
-  key_name      = "${var.key_name}"
-}
 module "gitlab" {
-  source        = "../modules/gitlab"
-  count         = "${var.count_gitlab}"
-  ami           = "${var.ami}"
-  server_port   = "${var.server_port}"
-  instance_type = "t2.medium"
+  source        = "../modules/ec2"
+  securitygroups = ["ssh", "gitlab"]
   key_name      = "${var.key_name}"
-}
-module "jenkins" {
-  source        = "../modules/jenkins"
-  count         = "${var.count_jenkins}"
-  ami           = "${var.ami}"
-  server_port   = "${var.server_port}"
+  count         = 1
   instance_type = "t2.micro"
-  key_name      = "${var.key_name}"
+  name_prefix   = "gitlab"
+  ami           = "${var.ami}"
+  provision_script = "files/standard.sh"
 }
