@@ -3,6 +3,7 @@ data "external" "ssh" {
 }
 
 resource "aws_key_pair" "sshkey" {
+  count      = "${var.count > 0 ? 1 : 0}"
   key_name   = "${var.key_name}"
   public_key = "${file("${data.external.ssh.result.path}.pub")}"
 }

@@ -1,6 +1,6 @@
 resource "aws_security_group" "ssh" {
   name = "ssh"
-  count = "${ contains(var.securitygroups, "ssh") == true ? 1:0}"
+  count = "${ var.count > 0 && contains(var.securitygroups, "ssh") == true ? 1:0}"
   # Inbound HTTP from anywhere
   ingress {
     from_port   = "22"
@@ -12,7 +12,7 @@ resource "aws_security_group" "ssh" {
 
 resource "aws_security_group" "standard" {
   name = "standard"
-  count = "${ contains(var.securitygroups, "standard") == true ? 1:0}"
+  count = "${ var.count > 0 &&  contains(var.securitygroups, "standard") == true ? 1:0}"
   # Inbound HTTP from anywhere
   ingress {
     from_port   = "443"
@@ -56,7 +56,7 @@ resource "aws_security_group" "standard" {
 
 resource "aws_security_group" "jenkins" {
   name = "jenkins"
-  count = "${ contains(var.securitygroups, "jenkins") == true ? 1:0}"
+  count = "${ var.count > 0 &&  contains(var.securitygroups, "jenkins") == true ? 1:0}"
   # Inbound HTTP from anywhere
   ingress {
     from_port   = "8080"
@@ -76,7 +76,7 @@ resource "aws_security_group" "jenkins" {
 
 resource "aws_security_group" "gitlab" {
   name = "gitlab"
-  count = "${ contains(var.securitygroups, "gitlab") == true ? 1:0}"
+  count = "${ var.count > 0 &&  contains(var.securitygroups, "gitlab") == true ? 1:0}"
   # Inbound HTTP from anywhere
   ingress {
     from_port   = "443"
