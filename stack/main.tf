@@ -3,13 +3,32 @@ provider "aws" {
   region     = "${var.region}"
 }
 
+module "my_aws_key" {
+  source = "../modules/aws_key" 
+}
+
+module "sg_gitlab" {
+  source = "../modules/security_groups/gitlab"
+}
+
+module "sg_jenkins" {
+  source = "../modules/security_groups/jenkins"
+}
+
+module "sg_ssh" {
+  source = "../modules/security_groups/ssh"
+}
+
+module "sg_standard" {
+  source = "../modules/security_groups/standard"
+}
+
 module "ec2_micro" {
   source        = "../modules/ec2"
-  securitygroups = ["ssh", "standard"]
-  key_name      = "${var.key_name}"
+  securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_standard.sg_name}"]
   count         = "${var.count_micro}"
   instance_type = "t2.micro"
-  name_prefix   = "gitlab"
+  name_prefix   = "micro"
   ami           = "${var.ami}"
   provision_script = "files/standard.sh"
 }
@@ -20,11 +39,10 @@ output "ec2_micro_public_ip" {
 
 module "ec2_small" {
   source        = "../modules/ec2"
-  securitygroups = ["ssh", "standard"]
-  key_name      = "${var.key_name}"
+  securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_standard.sg_name}"]
   count         = "${var.count_small}"
   instance_type = "t2.small"
-  name_prefix   = "gitlab"
+  name_prefix   = "small"
   ami           = "${var.ami}"
   provision_script = "files/standard.sh"
 }
@@ -35,11 +53,10 @@ output "ec2_small_public_ip" {
 
 module "ec2_med" {
   source        = "../modules/ec2"
-  securitygroups = ["ssh", "standard"]
-  key_name      = "${var.key_name}"
+  securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_standard.sg_name}"]
   count         = "${var.count_med}"
   instance_type = "t2.medium"
-  name_prefix   = "gitlab"
+  name_prefix   = "med"
   ami           = "${var.ami}"
   provision_script = "files/standard.sh"
 }
@@ -50,8 +67,7 @@ output "ec2_med_public_ip" {
 
 module "gitlab" {
   source        = "../modules/ec2"
-  securitygroups = ["ssh", "gitlab"]
-  key_name      = "${var.key_name}"
+  securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_gitlab.sg_name}"]
   count         = "${var.count_gitlab}"
   instance_type = "t2.micro"
   name_prefix   = "gitlab"
@@ -66,11 +82,10 @@ output "gitlab_public_ip" {
 
 module "jenkins" {
   source        = "../modules/ec2"
-  securitygroups = ["ssh", "jenkins"]
-  key_name      = "${var.key_name}"
+  securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_jenkins.sg_name}"]
   count         = "${var.count_jenkins}"
   instance_type = "t2.micro"
-  name_prefix   = "gitlab"
+  name_prefix   = "jenkins"
   ami           = "${var.ami}"
   provision_script = "files/standard.sh"
 }

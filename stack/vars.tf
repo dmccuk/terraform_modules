@@ -24,9 +24,6 @@ variable "server_port" {
   default = 80
 }
 
-variable "key_name" {
-  default = "dmccuk"
-}
 variable "ami" { # Ubuntu 16.04
   default = "ami-0773391ae604c49a4"
 }
