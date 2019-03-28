@@ -1,14 +1,6 @@
 data "external" "ssh" {
   program = ["bash", "${path.module}/../.scripts/ssh-gen.sh"]
 }
-
-resource "aws_key_pair" "sshkey" {
-  count      = "${var.count > 0 ? 1 : 0}"
-  key_name   = "${var.key_name}"
-  public_key = "${file("${data.external.ssh.result.path}.pub")}"
-}
-
-
 resource "aws_instance" "ec2" {
   count         = "${var.count}"
   ami           = "${var.ami}"
@@ -21,7 +13,7 @@ resource "aws_instance" "ec2" {
   security_groups = ["${var.securitygroups}"]
 
   # key_name is your AWS keypair to allow you access
-  key_name = "${aws_key_pair.sshkey.key_name}"
+  key_name = "${var.key_name}"
 
   provisioner "file" {
     source      = "${var.provision_script}"
