@@ -1,5 +1,5 @@
 variable "count_micro" {
-  default = 1
+  default = 0
 }
 variable "count_small" {
   default = 0

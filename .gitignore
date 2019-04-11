@@ -1,0 +1,3 @@
+stack/.terraform/
+stack/terraform.tfstate
+stack/terraform.tfstate.backup
