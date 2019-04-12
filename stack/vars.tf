@@ -11,7 +11,7 @@ variable "count_gitlab" {
   default = 0
 }
 variable "count_jenkins" {
-  default = 0
+  default = 1
 }
 
 #variable "access_key" {} # replaced by aws credentials

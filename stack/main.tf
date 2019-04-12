@@ -87,7 +87,7 @@ module "jenkins" {
   instance_type = "t2.micro"
   name_prefix   = "jenkins"
   ami           = "${var.ami}"
-  provision_script = "files/standard.sh"
+  provision_script = "files/jenkins_install.sh"
 }
 
 output "jenkins_public_ip" {
