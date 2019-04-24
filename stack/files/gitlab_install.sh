@@ -3,6 +3,9 @@
 sudo apt update -yq
 sudo DEBIAN_FRONTEND=noninteractive apt upgrade -yq
 sudo apt install wget curl git python openssh-server ca-certificates -yq
+#fix for python3 symlink
+ln -s /usr/bin/python3.5 /usr/bin/python
+#
 echo "postfix postfix/mailname string example.com" | sudo debconf-set-selections
 echo "postfix postfix/main_mailer_type string 'Internet Site'" | sudo debconf-set-selections
 sudo apt-get install -y postfix
