@@ -1,5 +1,5 @@
 variable "count_micro" {
-  default = 1
+  default = 0
 }
 variable "count_small" {
   default = 0
@@ -17,7 +17,7 @@ variable "count_jenkins" {
 #variable "access_key" {} # replaced by aws credentials
 #variable "secret_key" {} # replaced by aws credentials
 variable "region" {
-  default = "eu-west-1"
+  default = "AWS_REGION"
 }
 variable "server_port" {
   description = "The port the server will use for HTTP requests"
@@ -25,5 +25,5 @@ variable "server_port" {
 }
 
 variable "ami" { # Ubuntu 16.04
-  default = "ami-0773391ae604c49a4"
+  default = "AMI_ID"
 }

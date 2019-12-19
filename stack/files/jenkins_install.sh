@@ -1,14 +1,13 @@
-#/bin/bash
+#!/bin/bash
 # Installing Jenkins:
-sudo apt update -yq
-sudo DEBIAN_FRONTEND=noninteractive apt upgrade -yq
-sudo apt install wget curl git python openssh-server ca-certificates -yq
-#echo "postfix postfix/mailname string example.com" | sudo debconf-set-selections
-#echo "postfix postfix/main_mailer_type string 'Internet Site'" | sudo debconf-set-selections
-#sudo apt-get install -y postfix
-#curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-IP=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
-#echo $IP
-#sudo EXTERNAL_URL="http://"$IP apt-get install gitlab-ce
-#echo "Gitlab Installed"
-
+sudo wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo echo 'deb http://pkg.jenkins.io/debian-stable binary/' | sudo tee -a /etc/apt/sources.list.d/jenkins.list
+sudo apt-add-repository ppa:ansible/ansible -y
+sudo apt-get update
+sudo apt install wget curl git python3-minimal ansible -yq
+#fix for python3 symlink
+#ln -s /usr/bin/python3.5 /usr/bin/python
+sudo apt-get -y install default-jre
+sudo apt-get -y install jenkins
+sudo systemctl start jenkins
+echo " ---## Jenkins Installed ##---"

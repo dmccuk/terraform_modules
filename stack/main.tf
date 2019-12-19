@@ -25,7 +25,7 @@ module "sg_standard" {
 
 module "ec2_micro" {
   source        = "../modules/ec2"
-  securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_standard.sg_name}"]
+  securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_standard.sg_name}", "${module.sg_gitlab.sg_name}"]
   count         = "${var.count_micro}"
   instance_type = "t2.micro"
   name_prefix   = "micro"
@@ -69,10 +69,10 @@ module "gitlab" {
   source        = "../modules/ec2"
   securitygroups = ["${module.sg_ssh.sg_name}", "${module.sg_gitlab.sg_name}"]
   count         = "${var.count_gitlab}"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   name_prefix   = "gitlab"
   ami           = "${var.ami}"
-  provision_script = "files/standard.sh"
+  provision_script = "files/gitlab_install.sh"
 }
 
 output "gitlab_public_ip" {
@@ -87,7 +87,7 @@ module "jenkins" {
   instance_type = "t2.micro"
   name_prefix   = "jenkins"
   ami           = "${var.ami}"
-  provision_script = "files/standard.sh"
+  provision_script = "files/jenkins_install.sh"
 }
 
 output "jenkins_public_ip" {
