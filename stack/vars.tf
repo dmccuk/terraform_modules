@@ -21,7 +21,7 @@ variable "region" {
 }
 variable "server_port" {
   description = "The port the server will use for HTTP requests"
-  default = 80
+  default     = 80
 }
 
 variable "ami" { # Ubuntu 16.04
