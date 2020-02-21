@@ -1,14 +1,11 @@
 #/bin/bash
-
-# sleep until instance is ready
-until [[ -f /var/lib/cloud/instance/boot-finished ]]; do
-  sleep 1
-done
-
+set -x
 # Installing Gitlab:
 sudo apt update -yq
+sleep 10
 sudo DEBIAN_FRONTEND=noninteractive apt upgrade -yq
 sudo apt install wget curl git python openssh-server ca-certificates -yq
+sleep 10
 #fix for python3 symlink
 #ln -s /usr/bin/python3.5 /usr/bin/python
 #
