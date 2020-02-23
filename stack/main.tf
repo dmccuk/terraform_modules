@@ -87,7 +87,7 @@ module "jenkins" {
   instance_count   = var.count_jenkins
   instance_type    = "t2.micro"
   name_prefix      = "jenkins"
-  ami              = var.ami
+  ami              =  "ami-0f630a3f40b1eb0b8"
   provision_script = "files/jenkins_install.sh"
 }
 
