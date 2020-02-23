@@ -58,7 +58,7 @@ module "ec2_med" {
   instance_count   = var.count_med
   instance_type    = "t2.medium"
   name_prefix      = "med"
-  ami              = var.ami
+  ami              = "ami-0f630a3f40b1eb0b8"
   provision_script = "files/standard.sh"
 }
 
