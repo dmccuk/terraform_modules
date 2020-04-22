@@ -24,6 +24,6 @@ variable "server_port" {
   default     = 80
 }
 
-variable "ami" { # Ubuntu 16.04
+variable "ami" {
   default = "AMI_ID"
 }

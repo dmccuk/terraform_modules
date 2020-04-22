@@ -1,6 +1,11 @@
 data "external" "ssh" {
   program = ["bash", "${path.module}/../.scripts/ssh-gen.sh"]
 }
+
+locals {
+  selected_user = lookup(local.lookup_owners, data.aws_ami.ami_id.owner_id, "root")
+}
+
 resource "aws_instance" "ec2" {
   count         = var.instance_count
   ami           = var.ami
@@ -30,7 +35,7 @@ resource "aws_instance" "ec2" {
   connection {
     host        = self.public_ip
     type        = "ssh"
-    user        = "ubuntu"
+    user        = local.selected_user
     private_key = file(data.external.ssh.result.path)
     timeout     = "2m"
     agent       = false
