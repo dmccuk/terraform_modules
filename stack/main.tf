@@ -77,7 +77,7 @@ module "gitlab" {
 }
 
 output "gitlab_public_ip" {
-  value = "${module.gitlab.public_ip}"
+  value = module.gitlab.public_ip
 }
 
 
