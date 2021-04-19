@@ -17,13 +17,23 @@ variable "count_jenkins" {
 #variable "access_key" {} # replaced by aws credentials
 #variable "secret_key" {} # replaced by aws credentials
 variable "region" {
-  default = "AWS_REGION"
+  default = "eu-west-3"
 }
 variable "server_port" {
   description = "The port the server will use for HTTP requests"
   default     = 80
 }
 
-variable "ami" { # Ubuntu 18.04
-  default = "AMI_ID"
+# If you choose to build with Centos or Ubuntu AMI images
+# make sure you update the default user in this file:
+# ../modules/ec2/vars.tf
+
+variable "ami" {
+  default = "ami-062fbc1f6aaecbede"
 }
+#######################################
+# eu-west-3 images:
+# UBUNTU18.04 - ami-0e0090d3db396e90d
+# RHEL8 - ami-062fbc1f6aaecbede
+# RHEL7 - ami-072ec828dae86abe5
+#######################################
