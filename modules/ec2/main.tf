@@ -30,7 +30,7 @@ resource "aws_instance" "ec2" {
   connection {
     host        = self.public_ip
     type        = "ssh"
-    user        = "ubuntu"
+    user        = var.username
     private_key = file(data.external.ssh.result.path)
     timeout     = "2m"
     agent       = false
