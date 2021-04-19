@@ -10,5 +10,5 @@ variable "ami" {}
 variable "name_prefix" {}
 variable "provision_script" {}
 variable "username" {
-  default = "centos"
+  default = "ubuntu"
 }

@@ -29,7 +29,7 @@ variable "server_port" {
 # ../modules/ec2/vars.tf
 
 variable "ami" {
-  default = "ami-062fbc1f6aaecbede"
+  default = "ami-0e0090d3db396e90d"
 }
 #######################################
 # eu-west-3 images:
