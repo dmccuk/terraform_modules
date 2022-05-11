@@ -1,7 +1,6 @@
 provider "aws" {
-  shared_credentials_file = "/root/.aws/credentials"
+# shared_credentials_file = "/root/.aws/credentials"
   region                  = var.region
-  version                 = "~> 2.41.0"
 }
 
 module "my_aws_key" {
@@ -58,7 +57,6 @@ module "ec2_med" {
   instance_count   = var.count_med
   instance_type    = "t2.medium"
   name_prefix      = "med"
-#  ami              = "ami-0f630a3f40b1eb0b8"
   ami              = var.ami
   provision_script = "files/standard.sh"
 }
@@ -88,8 +86,7 @@ module "jenkins" {
   instance_count   = var.count_jenkins
   instance_type    = "t2.micro"
   name_prefix      = "jenkins"
-#  ami              =  "ami-0f630a3f40b1eb0b8"
-  ami              =  "ami-01fe9ee78a93d794d"
+  ami              = var.ami
   provision_script = "files/jenkins_install.sh"
 }
 
