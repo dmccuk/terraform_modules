@@ -14,8 +14,6 @@ variable "count_jenkins" {
   default = 0
 }
 
-#variable "access_key" {} # replaced by aws credentials
-#variable "secret_key" {} # replaced by aws credentials
 variable "region" {
   default = "eu-west-2"
 }

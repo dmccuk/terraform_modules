@@ -1,6 +1,5 @@
 provider "aws" {
-# shared_credentials_file = "/root/.aws/credentials"
-  region                  = var.region
+  region = var.region
 }
 
 module "my_aws_key" {
