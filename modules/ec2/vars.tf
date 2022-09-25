@@ -4,7 +4,7 @@ variable securitygroups {
 variable "instance_count" {}
 variable "instance_type" {}
 variable "key_name" {
-  default = "ssh_key_dd"
+  default = "ssh_key_dc"
 }
 variable "ami" {}
 variable "name_prefix" {}
