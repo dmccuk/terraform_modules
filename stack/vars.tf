@@ -27,5 +27,5 @@ variable "server_port" {
 # ../modules/ec2/vars.tf
 
 variable "ami" {
-  default = "ami-093762347983f511b"
+  default = "ADD_YOUR_PACKER_AMI_HERE"
 }
